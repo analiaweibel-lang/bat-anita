@@ -123,7 +123,7 @@
     </div>
 
     <div class="field-group">
-      <label>WhatsApp</label>
+      <label>WhatsApp <span style="color:rgba(255,255,255,0.3);font-weight:300;font-size:9px;letter-spacing:1px;">(obligatorio)</span></label>
       <input type="tel" id="whatsapp" placeholder="+54 9 11 0000-0000" autocomplete="tel"/>
     </div>
 
@@ -213,6 +213,14 @@
       setTimeout(() => document.getElementById('nombre').classList.remove('error'), 2500);
       return;
     }
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    if (!whatsapp) {
+      document.getElementById('whatsapp').classList.add('error');
+      document.getElementById('whatsapp').focus();
+      setTimeout(() => document.getElementById('whatsapp').classList.remove('error'), 2500);
+      return;
+    }
+
     if (!asistencia) {
       document.querySelectorAll('.radio-label').forEach(l => l.classList.add('error-border'));
       setTimeout(() => document.querySelectorAll('.radio-label').forEach(l => l.classList.remove('error-border')), 2500);
@@ -228,10 +236,10 @@
       Fecha:       new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' }),
       Nombre:      nombre,
       Apellido:    apellido || '—',
+      Whatsapp:    whatsapp,
       Asistencia:  asistencia.value,
       Restriccion: restriccion === 'Otra' && otroTexto ? 'Otra: ' + otroTexto : restriccion,
       Mensaje:     mensaje || '—',
-      Whatsapp:    document.getElementById('whatsapp').value.trim() || '—',
       ID:          Date.now() + '_' + Math.random().toString(36).slice(2,7)
     });
 
