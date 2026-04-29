@@ -100,7 +100,7 @@
     </div>
     <div class="info-card">
       <p class="info-label">Lugar</p>
-      <p class="info-value">Calima Palermo</p>
+      <p class="info-value"><a href="https://maps.app.goo.gl/dk2K7LjACN1TmHe58" target="_blank" style="color:var(--white);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Calima Palermo</a></p>
       <p class="info-sub">Av. Córdoba 4956</p>
     </div>
   </div>
@@ -120,6 +120,11 @@
         <label>Apellido</label>
         <input type="text" id="apellido" placeholder="Tu apellido..." autocomplete="family-name"/>
       </div>
+    </div>
+
+    <div class="field-group">
+      <label>WhatsApp</label>
+      <input type="tel" id="whatsapp" placeholder="+54 9 11 0000-0000" autocomplete="tel"/>
     </div>
 
     <div class="field-group">
@@ -226,6 +231,7 @@
       Asistencia:  asistencia.value,
       Restriccion: restriccion === 'Otra' && otroTexto ? 'Otra: ' + otroTexto : restriccion,
       Mensaje:     mensaje || '—',
+      Whatsapp:    document.getElementById('whatsapp').value.trim() || '—',
       ID:          Date.now() + '_' + Math.random().toString(36).slice(2,7)
     });
 
