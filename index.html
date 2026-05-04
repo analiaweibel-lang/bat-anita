@@ -181,11 +181,6 @@
       <textarea id="otroTexto" placeholder="Contanos un poco más..."></textarea>
     </div>
 
-    <div class="field-group">
-      <label>Mensaje para Anita <span style="color:rgba(30,42,69,0.25);font-weight:300;">(opcional)</span></label>
-      <textarea id="mensaje" placeholder="Un deseo, un abrazo..."></textarea>
-    </div>
-
     <button type="button" class="submit-btn" id="submitBtn" onclick="enviar()">Confirmar</button>
     <div class="loading-bar" id="loadingBar">Enviando confirmación...</div>
     <div class="error-msg" id="errorMsg">
@@ -254,7 +249,6 @@
     const apellido    = document.getElementById('apellido').value.trim();
     const restriccion = document.getElementById('restriccion').value;
     const otroTexto   = document.getElementById('otroTexto').value.trim();
-    const mensaje     = document.getElementById('mensaje').value.trim();
 
     const datos = new URLSearchParams({
       Fecha:       new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' }),
@@ -263,7 +257,6 @@
       Whatsapp:    whatsapp,
       Asistencia:  asistencia.value,
       Restriccion: restriccion === 'Otra' && otroTexto ? 'Otra: ' + otroTexto : restriccion,
-      Mensaje:     mensaje || '—',
       ID:          Date.now() + '_' + Math.random().toString(36).slice(2,7)
     });
 
